@@ -8,7 +8,7 @@ export default class PCIndex extends React.Component{
         super();
         this.state={
             shouyeShow:'block',
-            feileiShow:'none'
+            fenleiShow:'none'
         }
     }
     changeKey(e){
@@ -16,12 +16,12 @@ export default class PCIndex extends React.Component{
         if(e.key=='shouye' || e.key=='register'){
             this.setState({
                 shouyeShow:'block',
-                feileiShow:'none'
+                fenleiShow:'none'
             })
         }else{
             this.setState({
                 shouyeShow:'none',
-                feileiShow:'block'
+                fenleiShow:'block'
             })
         }
     }
@@ -30,7 +30,7 @@ export default class PCIndex extends React.Component{
             display:this.state.shouyeShow
         };
         const fenlei = {
-            display:this.state.feileiShow
+            display:this.state.fenleiShow
         }
         return (
             <div>

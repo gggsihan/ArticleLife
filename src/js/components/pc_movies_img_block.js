@@ -1,27 +1,24 @@
 import React from 'react';
 import {Card} from 'antd';
 import {Router, Route, Link, browserHistory} from 'react-router'
+import getJSONP from '../getData'
 
 export default class PCMoviesImgBlock extends React.Component{
     constructor(){
         super();
         this.state={
-            movies:''
+            movies:'',
         };
     }
-
     componentWillMount(){
-        console.log('willmount')
-        var myFetchOptions = {
-            method:'GET',
-            mode:'cors'
-        };
-        var that = this;
-        fetch("https://api.douban.com/v2/movie/"+this.props.type+"?count="+this.props.count,myFetchOptions)
-        .then(function(res){
-            console.log('response:' +res);
-            that.setState({movies:res.subjects})
-        });
+        let that = this;
+        console.log('this', this);
+        getJSONP(
+            "https://douban.uieee.com/v2/movie/"+this.props.type+"?count="+this.props.count,
+            (json)=>{
+                that.setState({movies:json.subjects});
+            }
+        )
         
     }
 
@@ -32,7 +29,7 @@ export default class PCMoviesImgBlock extends React.Component{
         const styleImage={
             display:'block',
             width:this.props.imageWidth,
-            height:"90px"
+            height:"130px"
         };
         const styleH3={
             width:this.props.imageWidth,
@@ -46,11 +43,11 @@ export default class PCMoviesImgBlock extends React.Component{
             <div key={index} className='imageblock'>
                 <Link to={`details/${moviesItem.uniquekey}`} target="_blank">
                     <div className='custom-image'>
-                        <img alt='' style={styleImage} src={moviesItem.images}/>
+                        <img alt='' style={styleImage} src={moviesItem.images.small}/>
                     </div>
                     <div className='custom-card'>
                         <h3 style={styleH3}>{moviesItem.title}</h3>
-                        <p>{moviesItem.original_title}</p>
+                        <p style={styleH3}>{moviesItem.original_title}</p>
                     </div>
                 </Link>
             </div>

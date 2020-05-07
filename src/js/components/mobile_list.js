@@ -1,44 +1,40 @@
 import React from 'react';
 import {Row, Col} from 'antd';
 import {Router, Route, Link, browserHistory} from 'react-router'
+import getJSONP from '../getData';
 
 export default class MobileList extends React.Component{
     constructor(){
         super();
         this.state={
-            news:''
+            movies:''
         };
     }
 
     componentWillMount(){
-        var myFetchOptions = {
-            method:'GET'
-        };
-        fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type="+this.props.type
-        +"&count="+this.props.count,myFetchOptions)
-        .then(response=>response.json())
-        .then(json=>this.setState({news:json}))
+        getJSONP("https://api.douban.com/v2/movie/"+this.props.type
+        +"?count="+this.props.count,(json)=>this.setState({movies:json}))
     }
 
     render(){
 
-        const {news} = this.state;
-        const newsList = news.length
+        const {movies} = this.state;
+        const moviesList = movies.length
         ?
-        news.map((newsItem,index)=>(
+        movies.map((moviesItem,index)=>(
             <section key={index} className='m-article list-item special-section clearfix'>
-                <Link to={`details/${newsItem.uniquekey}`} target="_blank">
+                <Link to={`details/${moviesItem.uniquekey}`} target="_blank">
                     <div className='m-article-img'>
-                        <img alt={newsItem.title} src={newsItem.thubnail_pic_s}/>
+                        <img alt={moviesItem.title} src={moviesItem.thubnail_pic_s}/>
                     </div>
                     <div className='m-article-info'>
                         <div className='m-article-title'>
-                            <span>{newsItem.title}</span>
+                            <span>{moviesItem.title}</span>
                         </div>
                         <div className='m-article-desc clearfix'>
                             <div className='m-article-desc-l'>
-                                <span className='m-article-channel'>{newsItem.realtype}</span>
-                                <span className='m-article-channel'>{newsItem.date}</span>
+                                <span className='m-article-channel'>{moviesItem.realtype}</span>
+                                <span className='m-article-channel'>{moviesItem.date}</span>
                             </div>
                         </div>
                     </div>
@@ -46,13 +42,13 @@ export default class MobileList extends React.Component{
             </section>
         ))
         :
-        '未加载到任何新闻';
+        '未加载到任何电影';
 
         return (
             <div>
                 <Row>
                     <Col span={24}>
-                        {newsList}
+                        {moviesList}
                     </Col>
                 </Row>
             </div>

@@ -41,3 +41,10 @@
     margin-top:20px;
     margin-bottom: 20px;
 }
+.imageblock{
+    float: left;
+    margin-left: 20px;
+}
+.custom-card{
+    text-align: center;
+}

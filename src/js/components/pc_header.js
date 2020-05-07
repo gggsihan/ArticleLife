@@ -9,7 +9,7 @@ class PCHeader extends React.Component{
     constructor(){
         super();
         this.state={
-            current:'shouye ',//哪个菜单默认显示
+            current:'shouye',//哪个菜单默认显示
             modalVisible:false,//模态框是否显示
             action:'login',//登录or注册
             hasLogined:false,//是否已经登录
@@ -127,14 +127,8 @@ class PCHeader extends React.Component{
                             <Menu.Item key='top250'>
                                 <Icon type="video-camera" />TOP250
                             </Menu.Item>
-                            <Menu.Item key='weekly'>
-                                <Icon type="video-camera" />口碑榜
-                            </Menu.Item>
                             <Menu.Item key='us_box'>
                                 <Icon type="video-camera" />票房榜
-                            </Menu.Item>
-                            <Menu.Item key='new_movies'>
-                                <Icon type="video-camera" />新片榜
                             </Menu.Item>
                             
                             {userShow}
