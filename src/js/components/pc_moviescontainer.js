@@ -30,10 +30,10 @@ export default class PCMoviesContainer extends React.Component{
                             <div className='moviesContainer'>
                                 <PCMoviesImgBlock key='theaters' count={8} type='in_theaters' width='100%' cardTitle='热映中' imageWidth='112px' />
                                 <PCMoviesImgBlock key='coming' count={8} type='coming_soon' width='100%' cardTitle='即将上映' imageWidth='112px' />
-                                {/* <PCMoviesImgBlock key='top250' count={8} type='top250' width='100%' cardTitle='TOP250' imageWidth='112px' /> */}
-                                {/* <PCMoviesImgBlock count={6} type='weekly' width='100%' cardTitle='口碑榜' imageWidth='112px' /> */}
-                                {/* <PCMoviesImgBlock count={6} type='us_box' width='100%' cardTitle='票房榜' imageWidth='112px' />
-                                <PCMoviesImgBlock count={6} type='new_movies' width='100%' cardTitle='新片榜' imageWidth='112px' /> */}
+                                <PCMoviesImgBlock key='top250' count={8} type='top250' width='100%' cardTitle='TOP250' imageWidth='112px' />
+                                <PCMoviesImgBlock key='weekly' count={8} type='weekly' width='100%' cardTitle='口碑榜' imageWidth='112px' />
+                                <PCMoviesImgBlock key='us_box' count={8} type='us_box' width='100%' cardTitle='票房榜' imageWidth='112px' />
+                                <PCMoviesImgBlock key='new_movies' count={8} type='new_movies' width='100%' cardTitle='新片榜' imageWidth='112px' />
                             </div>
                             
                         </div>
